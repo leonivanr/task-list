@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Lisk</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div id="main" class="card">
+                    <div class="card-content">
+                        <span class="card-title">Lista de tareas</span>
+                        <div class="row">
+                            <form id="formulario-tarea">
+                        <div class="input-field col s12">
+                            <input type="text" name="tarea" id="ingreso-tarea">
+                            <label for="tarea">Nueva tarea</label>
+                        </div>
+                                <input type="submit" value="agregar tarea" class="btn">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <h5 id="task-title">Tareas</h5>
+                        <div class="input-field col s12">
+                            <input type="text" name="filtro" id="filtro">
+                            <label for="filtro">Filtrar tareas</label>
+                        </div>
+                        <ul id="lista-tareas"class="collection"></ul>
+                        <a href="#" class="borrar-tareas btn black">Borrar Tareas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- JS Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- JS App -->
+    <script src="app.js""></script>
+</body>
+
+</html>
