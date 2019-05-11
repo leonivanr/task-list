@@ -16,6 +16,8 @@ function cargarEventos() {
     form.addEventListener('submit', agregarTarea);
     // Eliminar tarea.
     listaTareas.addEventListener('click', eliminarTarea);
+    // Eliminar tarea.
+    listaTareas.addEventListener('click', completarTarea);
     // Eliminar todas las tareas de la lista.
     eliminarTodoBtn.addEventListener('click', eliminarTodo);
     //Filtrar tareas.
@@ -23,11 +25,11 @@ function cargarEventos() {
 }
 
 function agregarTarea(e) {
+    // validate(ingresoTarea.value)
     //Verificamos si la entrada está vacía.
-    if (ingresoTarea.value === '') {
+    if (ingresoTarea.value.length < 2) {
         alert("Por favor, ingrese una tarea.");
-
-    }
+    } else { 
     // Crear etiqueta <li>
     const li = document.createElement('li');
     // Añadir clase 
@@ -39,7 +41,7 @@ function agregarTarea(e) {
     const doneIcon = document.createElement('a');
     // Añadir clase 
     deleteIcon.className = 'eliminar-tarea secondary-content ';
-    doneIcon.className = 'eliminar-tarea secondary-content';
+    doneIcon.className = 'completar-tarea secondary-content';
     //Añadir icono para eliminar tarea.
     deleteIcon.innerHTML = '<i class="fa fa-trash"></i>';
     doneIcon.innerHTML = '<i class="fa fa-check"></i>';
@@ -56,6 +58,7 @@ function agregarTarea(e) {
     emptyList.style.display = 'none';
     //Prevenimos que se comporte como un form.
     e.preventDefault();
+    }
 }
 
 function eliminarTarea(e) {
@@ -64,6 +67,16 @@ function eliminarTarea(e) {
         if (confirm('Estás seguro?')) {
             // Elimina el todo el elemento <li>
             e.target.parentElement.parentElement.remove();
+        }
+    }
+}
+
+function completarTarea(e) {
+    if (e.target.parentElement.classList.contains('completar-tarea')) {
+        if (confirm('Estás seguro?')) {
+            // Elimina el todo el elemento <li>
+            e.target.parentElement.parentElement.style.backgroundColor = '#a5d6a7';
+            e.target.parentElement.parentElement.style.textDecoration = 'line-through';
         }
     }
 }
@@ -93,3 +106,32 @@ function filtrarTareas(e) {
         }
     })
 }
+
+function validate(object) {
+    console.log(object);
+    
+    let hasLength = object.attr('data-length') !== null;
+    let lenAttr = parseInt(object.attr('data-length'));
+    let len = object[0].value.length;
+
+    if (len === 0 && object[0].validity.badInput === false && !object.is(':required')) {
+        if (object.hasClass('validate')) {
+            object.removeClass('valid');
+            object.removeClass('invalid');
+        }
+    } else {
+        if (object.hasClass('validate')) {
+            // Check for character counter attributes
+            if (
+                (object.is(':valid') && hasLength && len <= lenAttr) ||
+                (object.is(':valid') && !hasLength)
+            ) {
+                object.removeClass('invalid');
+                object.addClass('valid');
+            } else {
+                object.removeClass('valid');
+                object.addClass('invalid');
+            }
+        }
+    }
+};

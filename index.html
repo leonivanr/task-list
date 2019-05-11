@@ -40,7 +40,7 @@
                                 <form id="formulario-tarea">
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">create</i>
-                                        <input placeholder="Añadir tarea" type="text" name="tarea" id="ingreso-tarea">
+                                        <input placeholder="Añadir tarea" type="text" name="tarea" id="ingreso-tarea" class="validate">
                                     </div>
                                 </form>
                             </div>
@@ -53,13 +53,12 @@
                     <div id="main" class="card">
                         <div class="card-action ">
                             <h5 id="task-title">Lista de tareas</h5>
-                            <br>
                             <div id="empty-list" class="row">
                                 <div class="col s12">
                                     <div class="card">
                                         <div class="card-image">
                                             <img src="road.jpg">
-                                            <span class="card-title left-align">Aqui aparecerán 
+                                            <span class="card-title left-align">Aqui aparecerán
                                                 <br>las tareas que añadas.</span>
                                         </div>
                                     </div>
@@ -70,7 +69,10 @@
                                 <label for="filtro">Filtrar tareas</label>
                             </div>
                             <ul id="lista-tareas" class="collection inicio"></ul>
-                            <a href="#" class="borrar-tareas btn red lighten-1 inicio">Limpiar</a>
+                            <div class="inicio">
+                                <a href="#" class="limpiar btn teañ lighten-1">Limpiar completados</a>
+                                <a href="#" class="borrar-tareas btn red lighten-1 right">Borrar todo</a>
+                            </div>
                         </div>
                     </div>
                 </div>
