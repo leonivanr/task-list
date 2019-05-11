@@ -4,7 +4,9 @@ const listaTareas = document.querySelector('#lista-tareas');
 const eliminarTodoBtn = document.querySelector('.borrar-tareas');
 const filtro = document.querySelector('#filtro');
 const ingresoTarea = document.querySelector('#ingreso-tarea');
-
+const card = document.querySelector('.card-action');
+const inicio = document.querySelectorAll('.inicio');
+const emptyList = document.querySelector('#empty-list');
 
 cargarEventos();
 
@@ -33,17 +35,25 @@ function agregarTarea(e) {
     // Añadir la tarea ingresada al item de la lista
     li.appendChild(document.createTextNode(ingresoTarea.value));
     // Añadir link
-    const link = document.createElement('a');
+    const deleteIcon = document.createElement('a');
+    const doneIcon = document.createElement('a');
     // Añadir clase 
-    link.className = 'eliminar-tarea secondary-content';
+    deleteIcon.className = 'eliminar-tarea secondary-content ';
+    doneIcon.className = 'eliminar-tarea secondary-content';
     //Añadir icono para eliminar tarea.
-    link.innerHTML = '<i class="fa fa-trash"></i>';
-    //Agregamos el link al item.
-    li.appendChild(link)
+    deleteIcon.innerHTML = '<i class="fa fa-trash"></i>';
+    doneIcon.innerHTML = '<i class="fa fa-check"></i>';
+    //Agregamos el deleteIcon al item.
+    li.appendChild(deleteIcon)
+    li.appendChild(doneIcon)
     // Agregamos el item a la lista.
     listaTareas.appendChild(li);
     // Borrar texto ingresado
     ingresoTarea.value = '';
+    inicio[0].style.display = 'block';
+    inicio[1].style.display = 'block';
+    inicio[2].style.display = 'block';
+    emptyList.style.display = 'none';
     //Prevenimos que se comporte como un form.
     e.preventDefault();
 }
@@ -54,7 +64,6 @@ function eliminarTarea(e) {
         if (confirm('Estás seguro?')) {
             // Elimina el todo el elemento <li>
             e.target.parentElement.parentElement.remove();
-
         }
     }
 }
@@ -66,6 +75,10 @@ function eliminarTodo(e) {
     while (listaTareas.firstChild) {
         listaTareas.removeChild(listaTareas.firstChild);
     }
+    inicio[0].style.display = 'none';
+    inicio[1].style.display = 'none';
+    inicio[2].style.display = 'none';
+    emptyList.style.display = 'block';
 }
 
 function filtrarTareas(e) {

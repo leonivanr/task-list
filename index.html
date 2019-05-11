@@ -15,41 +15,84 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <div id="main" class="card">
-                    <div class="card-content">
-                        <span class="card-title">Lista de tareas</span>
-                        <div class="row">
-                            <form id="formulario-tarea">
-                                <div class="input-field col s12">
-                                    <input type="text" name="tarea" id="ingreso-tarea">
-                                    <label for="tarea">Nueva tarea</label>
-                                </div>
-                                <input type="submit" value="agregar tarea" class="btn">
-                            </form>
+    <header>
+        <div class="navbar-fixed">
+            <nav class="teal darken-1">
+                <div class="nav-wrapper container">
+                    <span href="#" class="brand-logo center s12"><i class="material-icons">done_all</i></span>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="#"><i class="material-icons">search</i></a></li>
+                        <li><a href="#"><i class="material-icons">refresh</i></a></li>
+                        <li><a href="#"><i class="material-icons">more_vert</i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- =============== CONTENT ================= -->
+    <main class=" teal lighten-1"><br>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 offset-m3 l6 offset-l3">
+                    <div id="main" class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <form id="formulario-tarea">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">create</i>
+                                        <input placeholder="Añadir tarea" type="text" name="tarea" id="ingreso-tarea">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-action">
-                        <h5 id="task-title">Tareas</h5>
-                        <div class="input-field col s12">
-                            <input type="text" name="filtro" id="filtro">
-                            <label for="filtro">Filtrar tareas</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 offset-m3 l6 offset-l3">
+                    <div id="main" class="card">
+                        <div class="card-action ">
+                            <h5 id="task-title">Lista de tareas</h5>
+                            <br>
+                            <div id="empty-list" class="row">
+                                <div class="col s12">
+                                    <div class="card">
+                                        <div class="card-image">
+                                            <img src="road.jpg">
+                                            <span class="card-title left-align">Aqui aparecerán 
+                                                <br>las tareas que añadas.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-field col s12 inicio">
+                                <input type="text" name="filtro" id="filtro">
+                                <label for="filtro">Filtrar tareas</label>
+                            </div>
+                            <ul id="lista-tareas" class="collection inicio"></ul>
+                            <a href="#" class="borrar-tareas btn red lighten-1 inicio">Limpiar</a>
                         </div>
-                        <ul id="lista-tareas" class="collection"></ul>
-                        <a href="#" class="borrar-tareas btn black">Borrar Tareas</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+    <!-- =============== FOOTER ================= -->
+    <footer class="page-footer teal darken-2">
+        <div class="row">
+            <div class="footer-copyright teal darken-2">
+                <div class="container center">
+                    © 2019 Copycrap Text
+                </div>
+            </div>
+        </div>
+    </footer>
     <!--Jquery-->
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <!-- JS Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- JS App -->
-    <script src="app.js""></script>
+    <script src="app.js"></script>
 </body>
 
 </html>

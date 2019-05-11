@@ -1,3 +1,47 @@
   .fa-trash {
-      color: black;
+    color: black;
   }
+
+  .fa-trash:hover {
+    color: #e53935;
+  }
+
+  .fa-check {
+    color: black;
+  }
+
+  .fa-check:hover {
+    color: #00897b;
+  }
+
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  ::placeholder {
+    color: black;
+  }
+
+  .card-content {
+    padding: 0px 24px !important;
+  }
+
+  hr {
+    color: lightgray;
+  }
+
+  .inicio {
+    display: none;
+  }
+
+  .dropdown-content {
+  position: absolute;
+  top: -64px;  
+  }
+
