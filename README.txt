@@ -1,1 +1,0 @@
-Simple lista de tareas usando Materialize & JS.
