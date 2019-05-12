@@ -1,3 +1,8 @@
+//TODO
+// Persistencia.
+// Filtro Completados. 
+
+
 // Definir variables de UI
 const form = document.querySelector('#formulario-tarea');
 const listaTareas = document.querySelector('#lista-tareas');
@@ -12,6 +17,9 @@ cargarEventos();
 
 // Cargar todos los eventos de escucha.
 function cargarEventos() {
+    $('.inicio[0]').hide();
+    $('.inicio[1]').hide();
+    $('.inicio[2]').hide();
     // Añadir tarea.
     form.addEventListener('submit', agregarTarea);
     // Eliminar tarea.
@@ -29,35 +37,35 @@ function agregarTarea(e) {
     //Verificamos si la entrada está vacía.
     if (ingresoTarea.value.length < 2) {
         alert("Por favor, ingrese una tarea.");
-    } else { 
-    // Crear etiqueta <li>
-    const li = document.createElement('li');
-    // Añadir clase 
-    li.className = 'collection-item';
-    // Añadir la tarea ingresada al item de la lista
-    li.appendChild(document.createTextNode(ingresoTarea.value));
-    // Añadir link
-    const deleteIcon = document.createElement('a');
-    const doneIcon = document.createElement('a');
-    // Añadir clase 
-    deleteIcon.className = 'eliminar-tarea secondary-content ';
-    doneIcon.className = 'completar-tarea secondary-content';
-    //Añadir icono para eliminar tarea.
-    deleteIcon.innerHTML = '<i class="fa fa-trash"></i>';
-    doneIcon.innerHTML = '<i class="fa fa-check"></i>';
-    //Agregamos el deleteIcon al item.
-    li.appendChild(deleteIcon)
-    li.appendChild(doneIcon)
-    // Agregamos el item a la lista.
-    listaTareas.appendChild(li);
-    // Borrar texto ingresado
-    ingresoTarea.value = '';
-    inicio[0].style.display = 'block';
-    inicio[1].style.display = 'block';
-    inicio[2].style.display = 'block';
-    emptyList.style.display = 'none';
-    //Prevenimos que se comporte como un form.
-    e.preventDefault();
+    } else {
+        // Crear etiqueta <li>
+        const li = document.createElement('li');
+        // Añadir clase 
+        li.className = 'collection-item';
+        // Añadir la tarea ingresada al item de la lista
+        li.appendChild(document.createTextNode(ingresoTarea.value));
+        // Añadir link
+        const deleteIcon = document.createElement('a');
+        const doneIcon = document.createElement('a');
+        // Añadir clase 
+        deleteIcon.className = 'eliminar-tarea secondary-content ';
+        doneIcon.className = 'completar-tarea secondary-content';
+        //Añadir icono para eliminar tarea.
+        deleteIcon.innerHTML = '<i class="fa fa-trash"></i>';
+        doneIcon.innerHTML = '<i class="fa fa-check"></i>';
+        //Agregamos el deleteIcon al item.
+        li.appendChild(deleteIcon)
+        li.appendChild(doneIcon)
+        // Agregamos el item a la lista.
+        listaTareas.appendChild(li);
+        // Borrar texto ingresado
+        ingresoTarea.value = '';
+        inicio[0].style.display = 'block';
+        inicio[1].style.display = 'block';
+        inicio[2].style.display = 'block';
+        $('#empty-list').slideUp(600);
+        //Prevenimos que se comporte como un form.
+        e.preventDefault();
     }
 }
 
@@ -69,6 +77,7 @@ function eliminarTarea(e) {
             e.target.parentElement.parentElement.remove();
         }
     }
+    // TODO clausula si no hay ningun elemento.
 }
 
 function completarTarea(e) {
@@ -91,7 +100,7 @@ function eliminarTodo(e) {
     inicio[0].style.display = 'none';
     inicio[1].style.display = 'none';
     inicio[2].style.display = 'none';
-    emptyList.style.display = 'block';
+    $('#empty-list').slideDown(500);
 }
 
 function filtrarTareas(e) {
@@ -109,7 +118,7 @@ function filtrarTareas(e) {
 
 function validate(object) {
     console.log(object);
-    
+
     let hasLength = object.attr('data-length') !== null;
     let lenAttr = parseInt(object.attr('data-length'));
     let len = object[0].value.length;
