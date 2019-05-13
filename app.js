@@ -12,14 +12,15 @@ const ingresoTarea = document.querySelector('#ingreso-tarea');
 const card = document.querySelector('.card-action');
 const inicio = document.querySelectorAll('.inicio');
 const emptyList = document.querySelector('#empty-list');
+const date = document.querySelector('#date');
+let today = new Date();
+const options = {weekday: 'long', month: 'long', day: 'numeric'}
 
 cargarEventos();
 
 // Cargar todos los eventos de escucha.
 function cargarEventos() {
-    $('.inicio[0]').hide();
-    $('.inicio[1]').hide();
-    $('.inicio[2]').hide();
+    date.innerHTML = today.toLocaleDateString('es-AR',options).toUpperCase();
     // Añadir tarea.
     form.addEventListener('submit', agregarTarea);
     // Eliminar tarea.
@@ -82,11 +83,10 @@ function eliminarTarea(e) {
 
 function completarTarea(e) {
     if (e.target.parentElement.classList.contains('completar-tarea')) {
-        if (confirm('Estás seguro?')) {
             // Elimina el todo el elemento <li>
             e.target.parentElement.parentElement.style.backgroundColor = '#a5d6a7';
             e.target.parentElement.parentElement.style.textDecoration = 'line-through';
-        }
+        
     }
 }
 
