@@ -35,3 +35,6 @@
   .inicio {
     display: none;
   }
+  .row {
+    margin-bottom: 5px !important;
+  }
